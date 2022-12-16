@@ -318,20 +318,24 @@ console.log(howManyDays(2), 'giorni trascorsi');
 console.log(`
 ------------------------- Esercizio 10 ----------------------
 `);
-const isTodayMyBirthday = () => {
+// settare il mese partendo da 0 (gennaio) a 11(dicembre)
+
+const isTodayMyBirthday = (giorno, mese) => {
   const data = new Date();
+  mese = Number(mese) - 1
   data.getDate()
   const compleanno = new Date()
-  compleanno.setDate(11)
-  compleanno.setMonth(3)
-  if (data === compleanno) {
+  compleanno.setFullYear(2022,Number(mese),Number(giorno))
+  const diff = Math.floor(compleanno / Math.floor(1000*60*60*24)) - Math.floor (data / (1000*60*60*24))
+  if (diff === 0) {
     return true
   } else {
     return false
   }
 }
 isTodayMyBirthday()
-console.log('Oggi è il mio compleanno?', isTodayMyBirthday());
+console.log(isTodayMyBirthday('16',12));
+// console.log('Oggi è il mio compleanno?', isTodayMyBirthday());
 // Arrays & Oggetti
 
 // NOTA: l'array "movies" usato in alcuni esercizi è definito alla fine di questo file
